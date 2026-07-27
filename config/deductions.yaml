@@ -1,0 +1,10 @@
+# Deduction rate definitions by partner corporate classification
+corporate:
+  gst_rate: 0.18
+  tds_rate: 0.10
+  formula: "net = gross + gst - tds"  # GST added, TDS deducted
+
+non_corporate:
+  gst_rate: 0.0
+  tds_rate: 0.05
+  formula: "net = gross - tds"  # No GST, TDS deducted

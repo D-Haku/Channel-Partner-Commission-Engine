@@ -1,0 +1,47 @@
+[project]
+name = "channel-partner-commission-engine"
+version = "0.1.0"
+description = "A configuration-driven batch ETL system that computes commission payouts for loan channel partners"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.1.0",
+    "pyspark>=3.5.0",
+    "duckdb>=0.10.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "hypothesis>=6.100.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "--strict-markers -v"
+markers = [
+    "property: property-based tests using Hypothesis",
+    "integration: integration tests requiring external resources",
+]
+
+[tool.coverage.run]
+source = ["commission_engine"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.",
+]

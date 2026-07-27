@@ -1,0 +1,22 @@
+# Eligibility rules for commission qualification
+rules:
+  - id: MIN_DISBURSEMENT
+    description: "Minimum disbursement amount"
+    product: ALL
+    field: disbursed_amount
+    operator: gte
+    value: 10000
+
+  - id: ACTIVE_PARTNER
+    description: "Partner must be active"
+    product: ALL
+    field: partner_active
+    operator: eq
+    value: true
+
+  - id: HL_MIN_AMOUNT
+    description: "Home Loan minimum amount"
+    product: HL
+    field: disbursed_amount
+    operator: gte
+    value: 500000

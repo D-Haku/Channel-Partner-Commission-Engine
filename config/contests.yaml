@@ -1,0 +1,24 @@
+# Contest definitions for partner incentive programs
+contests:
+  - id: MONTHLY_PL_VOLUME
+    type: monthly
+    qualification_rule:
+      metric: disbursement_count
+      product: PL
+      operator: gte
+      threshold: 10
+    payout:
+      type: fixed
+      amount: 5000
+
+  - id: QUARTERLY_REVENUE
+    type: quarterly
+    qualification_rule:
+      metric: total_disbursed_amount
+      product: ALL
+      operator: gte
+      threshold: 50000000
+    payout:
+      type: percentage
+      rate: 0.05
+      basis: total_disbursed_amount

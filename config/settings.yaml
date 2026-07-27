@@ -1,0 +1,30 @@
+# Global settings for the Channel Partner Commission Engine
+warehouse:
+  backend: duckdb  # or snowflake
+  duckdb:
+    database_path: data/warehouse.duckdb
+  snowflake:
+    account: ${SNOWFLAKE_ACCOUNT}
+    user: ${SNOWFLAKE_USER}
+    password: ${SNOWFLAKE_PASSWORD}
+    warehouse: COMPUTE_WH
+    database: COMMISSION_DB
+
+storage:
+  backend: local_fs  # or minio, s3
+  local_fs:
+    base_path: output/
+  minio:
+    endpoint: http://localhost:9000
+    access_key: ${MINIO_ACCESS_KEY}
+    secret_key: ${MINIO_SECRET_KEY}
+    bucket: commission-reports
+  s3:
+    bucket: ${S3_BUCKET}
+    prefix: commission-reports/
+
+reconciliation:
+  tolerance: 0.01  # absolute difference threshold
+
+processing:
+  spark_mode: local  # or cluster

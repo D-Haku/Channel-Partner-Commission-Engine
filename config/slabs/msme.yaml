@@ -1,0 +1,28 @@
+# MSME commission slab configuration
+product: MSME
+slab_basis: disbursed_amount
+slabs:
+  - min: 0
+    max: 1000000
+    rate_type: percentage
+    rate: 0.60
+  - min: 1000001
+    max: 3000000
+    rate_type: percentage
+    rate: 0.80
+  - min: 3000001
+    max: null  # unbounded upper
+    rate_type: percentage
+    rate: 1.00
+
+sequence_rules:
+  first_disbursement_multiplier: 1.0
+  subsequent_disbursement_multiplier: 0.5
+
+loan_sequence_tiers:
+  - sequence_min: 1
+    sequence_max: 5
+    rate_adjustment: 0.0
+  - sequence_min: 6
+    sequence_max: null
+    rate_adjustment: -0.10
